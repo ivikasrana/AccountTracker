@@ -17,7 +17,8 @@ namespace AccountTrackerService
     {
         public DateTime CreateDate { get; set; }
         public int EventId { get; set; }
-        public string EventMessage { get; set; }
+        public string EventName { get; set; }
+        public string EventMessageXml { get; set; }
         public string IpAddress { get; set; }
     }
 
@@ -55,7 +56,7 @@ namespace AccountTrackerService
                 IsRunning = false;
             }
         }
-        
+
         private void OnEventRecordWritten(object sender, EventRecordWrittenEventArgs e)
         {
             try
@@ -65,9 +66,11 @@ namespace AccountTrackerService
                 string str = ((EventLogRecord)e.EventRecord).GetPropertyValues(propertySelector)[0].ToString();
                 NegotiationdEventArgs data = new NegotiationdEventArgs
                 {
-                    CreateDate = e.EventRecord.TimeCreated.Value,
+                    IpAddress = str,
                     EventId = e.EventRecord.Id,
-                    IpAddress = str
+                    EventName = e.EventRecord.LogName,
+                    EventMessageXml = e.EventRecord.ToXml(),
+                    CreateDate = e.EventRecord.TimeCreated.Value
                 };
                 if (Negotiated != null)
                     Negotiated(this, data);
@@ -77,7 +80,7 @@ namespace AccountTrackerService
                 WriteEntry(exception.Message);
             }
         }
-       
+
         internal void WriteEntry(string msg)
         {
             EventLog.WriteEntry("VikasRana.AccountTracker", msg);
