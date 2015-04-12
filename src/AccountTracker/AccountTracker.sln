@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountTracker", "AccountTracker\AccountTracker.csproj", "{52776F66-5859-4EED-976A-82386C2EBCCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountTrackerService", "AccountTrackerService\AccountTrackerService.csproj", "{6DE1E009-085D-42E4-8B74-E8D7EE9C0064}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52776F66-5859-4EED-976A-82386C2EBCCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52776F66-5859-4EED-976A-82386C2EBCCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52776F66-5859-4EED-976A-82386C2EBCCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52776F66-5859-4EED-976A-82386C2EBCCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DE1E009-085D-42E4-8B74-E8D7EE9C0064}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DE1E009-085D-42E4-8B74-E8D7EE9C0064}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DE1E009-085D-42E4-8B74-E8D7EE9C0064}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DE1E009-085D-42E4-8B74-E8D7EE9C0064}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
