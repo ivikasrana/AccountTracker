@@ -1,11 +1,5 @@
 # AccountTracker
-<<<<<<< HEAD
 
-Detect Windows Account activities like Successful logon, failed logon, account loggoff
+Detect Windows Account activities like Successful logon, failed logon, account loggoff on Event IDs 4624, 4625, 4634
 
 
-=======
-Detect Windows Account activities like Successful logon, failed logon, account loggoff
-
->>>>>>> origin/master
-# Currently under development
