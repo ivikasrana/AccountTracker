@@ -33,6 +33,7 @@
             // 
             // AccountTrackerServiceProcessInstaller
             // 
+            this.AccountTrackerServiceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalSystem;
             this.AccountTrackerServiceProcessInstaller.Password = null;
             this.AccountTrackerServiceProcessInstaller.Username = null;
             // 

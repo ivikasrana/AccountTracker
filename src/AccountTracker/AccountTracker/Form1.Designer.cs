@@ -36,15 +36,15 @@
             // 
             this.btnInstall.Location = new System.Drawing.Point(42, 53);
             this.btnInstall.Name = "btnInstall";
-            this.btnInstall.Size = new System.Drawing.Size(75, 23);
+            this.btnInstall.Size = new System.Drawing.Size(107, 40);
             this.btnInstall.TabIndex = 0;
-            this.btnInstall.Text = "Install";
+            this.btnInstall.Text = "Start Service";
             this.btnInstall.UseVisualStyleBackColor = true;
             this.btnInstall.Click += new System.EventHandler(this.btnInstall_Click);
             // 
             // btnUninstall
             // 
-            this.btnUninstall.Location = new System.Drawing.Point(155, 53);
+            this.btnUninstall.Location = new System.Drawing.Point(163, 150);
             this.btnUninstall.Name = "btnUninstall";
             this.btnUninstall.Size = new System.Drawing.Size(75, 23);
             this.btnUninstall.TabIndex = 1;
@@ -61,6 +61,7 @@
             this.Controls.Add(this.btnInstall);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }

@@ -18,16 +18,39 @@ namespace AccountTracker
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            var serviceStatus = ServiceInstaller.GetServiceStatus(ServiceName);
+            if (serviceStatus == ServiceState.NotFound || serviceStatus == ServiceState.Stop)
+                ToggleService();
+            else if (serviceStatus == ServiceState.Run || serviceStatus == ServiceState.Starting)
+                btnInstall.Text = "Stop Service";
+        }
+
         const string ServiceName = "AccountTrackerService";
         private void btnInstall_Click(object sender, EventArgs e)
         {
-            if (!ServiceInstaller.ServiceIsInstalled(ServiceName))
+            ToggleService();
+        }
+
+        void ToggleService()
+        {
+            if (Convert.ToString(btnInstall.Text).Contains("Start"))
             {
-                ServiceInstaller.InstallAndStart(ServiceName, ServiceName, string.Format("{0}{1}{2}", Application.StartupPath, "\\", ServiceName));
-                MessageBox.Show("AccountTracker Service Installed");
+                if (!ServiceInstaller.ServiceIsInstalled(ServiceName))
+                {
+                    ServiceInstaller.InstallAndStart(ServiceName, ServiceName, string.Format("{0}{1}{2}", Application.StartupPath, "\\", ServiceName));
+                    MessageBox.Show("Service Installed");
+                }
+                else
+                    ServiceInstaller.StartService(ServiceName);
+                btnInstall.Text = "Stop Service";
             }
             else
-                ServiceInstaller.StartService(ServiceName);
+            {
+                ServiceInstaller.StopService(ServiceName);
+                btnInstall.Text = "Start Service";
+            }
         }
 
         private void btnUninstall_Click(object sender, EventArgs e)
