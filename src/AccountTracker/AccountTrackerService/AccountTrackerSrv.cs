@@ -20,9 +20,9 @@ namespace AccountTrackerService
 
         List<AccountTracker> events = new List<AccountTracker>()
         {
-            new AccountTracker(4624),
-            new AccountTracker(4625),
-            new AccountTracker(4634)
+            //new AccountTracker(4624),
+            new AccountTracker(4625)
+            //new AccountTracker(4634)
         };
 
         protected override void OnStart(string[] args)
@@ -37,22 +37,16 @@ namespace AccountTrackerService
 
         void activity_Negotiated(object sender, NegotiationdEventArgs data)
         {
-            try
-            {
-                if (Command.Connection.State != ConnectionState.Open)
-                    Command.Connection.Open();
-                Command.Parameters.Clear();
-                Command.Parameters.AddWithValue("@IP", data.IpAddress);
-                Command.Parameters.AddWithValue("@EventID", data.EventId);
-                Command.Parameters.AddWithValue("@EventName", data.EventName);
-                Command.Parameters.AddWithValue("@EventMessage", data.EventMessageXml);
-                Command.Parameters.AddWithValue("@Created", data.CreateDate);
-                Command.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                EventLog.WriteEntry("AccountTrackerError", ex.ToString());
-            }
+            if (Command.Connection.State != ConnectionState.Open)
+                Command.Connection.Open();
+            Command.Parameters.Clear();
+            Command.Parameters.AddWithValue("@IP", data.IpAddress);
+            Command.Parameters.AddWithValue("@EventID", data.EventId);
+            Command.Parameters.AddWithValue("@EventName", data.EventName);
+            Command.Parameters.AddWithValue("@EventMessage", data.EventMessageXml);
+            Command.Parameters.AddWithValue("@Created", data.CreateDate);
+            Command.ExecuteNonQuery();
+            Command.Connection.Close();
         }
 
         SqlCommand _Command;
